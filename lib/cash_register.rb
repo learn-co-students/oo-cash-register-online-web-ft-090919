@@ -16,7 +16,7 @@ class CashRegister
 
   def apply_discount
     unless !discount
-      self.total = (total * ((100.0 - discount) / 100.0)).to_i
+      self.total -= (total * (discount / 100.0)).to_i
       "After the discount, the total comes to $#{total}."
     else
       "There is no discount to apply."
@@ -24,6 +24,6 @@ class CashRegister
   end
 
   def void_last_transaction
-    self.total -= self.last_item
+    self.total -= last_item
   end
 end
